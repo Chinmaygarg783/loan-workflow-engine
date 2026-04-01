@@ -1,0 +1,75 @@
+{
+  "workflow": {
+    "max_retries": 2,
+    "retry_delay_seconds": 1,
+    "ambiguous_thresholds": {
+      "credit_score_min": 580,
+      "credit_score_max": 650,
+      "income_min": 25000,
+      "income_max": 40000
+    }
+  },
+  "rules": [
+    {
+      "id": "R001",
+      "name": "minimum_age",
+      "description": "Applicant must be at least 18 years old",
+      "field": "age",
+      "operator": "lt",
+      "value": 18,
+      "action": "REJECT",
+      "priority": 1
+    },
+    {
+      "id": "R002",
+      "name": "maximum_age",
+      "description": "Applicant must be under 75 years old",
+      "field": "age",
+      "operator": "gt",
+      "value": 75,
+      "action": "REJECT",
+      "priority": 2
+    },
+    {
+      "id": "R003",
+      "name": "hard_reject_credit_score",
+      "description": "Credit score below 500 is an automatic rejection",
+      "field": "credit_score",
+      "operator": "lt",
+      "value": 500,
+      "action": "REJECT",
+      "priority": 3
+    },
+    {
+      "id": "R004",
+      "name": "minimum_income",
+      "description": "Annual income must be at least $15,000",
+      "field": "income",
+      "operator": "lt",
+      "value": 15000,
+      "action": "REJECT",
+      "priority": 4
+    },
+    {
+      "id": "R005",
+      "name": "loan_to_income_ratio",
+      "description": "Loan amount must not exceed 5x annual income",
+      "field": "loan_to_income",
+      "operator": "gt",
+      "value": 5,
+      "derived": true,
+      "action": "REJECT",
+      "priority": 5
+    },
+    {
+      "id": "R006",
+      "name": "strong_credit_auto_approve",
+      "description": "Credit score above 750 with income above $40,000 qualifies for automatic approval",
+      "field": "credit_score",
+      "operator": "gte",
+      "value": 750,
+      "action": "APPROVE",
+      "priority": 6
+    }
+  ]
+}
