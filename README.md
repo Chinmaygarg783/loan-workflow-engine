@@ -76,7 +76,9 @@ POST /applications
 pip install -r requirements.txt
 
 # 2. Set your Anthropic API key (for AI review of ambiguous cases)
-export ANTHROPIC_API_KEY=sk-ant-...
+# Add your OpenRouter key directly in ai_agent.py
+# Open ai_agent.py and set:
+# api_key = "sk-or-your-key-here"
 
 # 3. Start the server
 uvicorn main:app --reload
