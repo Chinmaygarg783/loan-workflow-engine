@@ -1,7 +1,7 @@
 # 🏦 Loan Workflow Decision Engine
 
 A **configurable workflow decision engine** with AI-assisted review for ambiguous loan applications.
-Built in Python using FastAPI, Pydantic, SQLite, and Claude AI.
+Built in Python using FastAPI, Pydantic, SQLite, and OpenRouter GPT-4o mini.
 
 ---
 
